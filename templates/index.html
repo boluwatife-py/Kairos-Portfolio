@@ -5,13 +5,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Selecao Bootstrap Template</title>
+  <title>Kairos | I make music |</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
 
-  <link href="{% static 'img/favicon.png'%}" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  <link href="https://placehold.co/50x50/953BF8/white?text=K" rel="icon">
+  <link href="https://placehold.co/50x50/953BF8/white?text=K" rel="apple-touch-icon">
 
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,6 +20,38 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
+  <script>
+    document.addEventListener("contextmenu", event => event.preventDefault()); // Disable Right-Click
+
+    function playAudio(url) {
+      const audioPlayer = document.getElementById("audio-player");
+      audioPlayer.src = url;
+      audioPlayer.play();
+    }
+  </script>
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+  <style>
+    .audio-card {
+      border-radius: 12px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .audio-banner {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .plyr--audio {
+      width: 100%;
+      margin-top: 15px;
+    }
+  </style>
 
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
@@ -155,26 +187,26 @@
         <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item col-3">
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-              <i class="bi bi-binoculars"></i>
+              <i class="bi bi-cash-stack"></i>
               <h4 class="d-none d-lg-block">Music Production</h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-              <i class="bi bi-box-seam"></i>
+              <i class="bi bi-boombox"></i>
               <h4 class="d-none d-lg-block">Live Performance</h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-              <i class="bi bi-brightness-high"></i>
-              <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+              <i class="bi bi-mic-fill"></i>
+              <h4 class="d-none d-lg-block">Music Direction</h4>
             </a>
           </li>
           <li class="nav-item col-3">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
-              <i class="bi bi-command"></i>
-              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+              <i class="bi bi-vinyl"></i>
+              <h4 class="d-none d-lg-block">Mixing</h4>
             </a>
           </li>
         </ul><!-- End Tab Nav -->
@@ -185,20 +217,23 @@
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
                 <p class="fst-italic">
-                  We take your raw ideas and turn them into fully produced tracks. From the first spark of inspiration to the final mix, we make sure every detail sounds just right.
+                  We take your raw ideas and turn them into fully produced tracks. From the first spark of inspiration
+                  to the final mix, we make sure every detail sounds just right.
                 </p>
                 <ul>
                   <li><i class="bi bi-check2-all"></i>
                     <spab>Bringing your vision to life, one note at a time.</spab>
                   </li>
-                  <li><i class="bi bi-check2-all"></i> <span>Crafting tracks that feel authentic and powerful.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Crafting tracks that feel authentic and powerful.</span>
+                  </li>
                   <li><i class="bi bi-check2-all"></i> <span>Every sound is shaped to make an impact.</span></li>
                 </ul>
                 <p>
-                  Music isn’t just sound—it’s a feeling. We help you create tracks that connect with people and leave a lasting impression.
+                  Music isn’t just sound—it’s a feeling. We help you create tracks that connect with people and leave a
+                  lasting impression.
                 </p>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
+              <div class="col-lg-6 order-1 order-lg-2 text-center ">
                 <img src="{% static 'img/working-1.jpg'%}" alt="" class="img-fluid">
               </div>
             </div>
@@ -208,46 +243,41 @@
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
                 <p>
-                  Whether it's a small gathering or a packed venue, we bring energy, passion, and connection to every performance. We know how to read the room and keep the vibe alive.
+                  Whether it's a small gathering or a packed venue, we bring energy, passion, and connection to every
+                  performance. We know how to read the room and keep the vibe alive.
                 </p>
                 <ul>
                   <li><i class="bi bi-check2-all"></i> <span>Every show is tailored to fit the moment.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Creating performances that feel personal and real.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Creating performances that feel personal and real.</span>
+                  </li>
                   <li><i class="bi bi-check2-all"></i> <span>We make sure every note hits the right emotion.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu
-                      fugiat nulla pariatur.</span></li>
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="{% static 'img/working-2.jpg'%}" alt="" class="img-fluid">
               </div>
+              <p>A great performance is more than just playing music—it’s about creating moments people will remember.
+              </p>
             </div>
           </div><!-- End Tab Content Item -->
 
           <div class="tab-pane fade" id="features-tab-3">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  We help shape the creative direction of your project, making sure every piece fits together perfectly.
+                  From rehearsals to final production, we guide the process so your music stays true to your vision.
                 </p>
                 <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate
-                      velit.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores quos qui
-                      a. Ipsum neque dolor voluptate nisi sed.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Helping you bring clarity and purpose to your sound.</span>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span>Fine-tuning every detail so nothing feels out of
+                      place.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Making sure your music speaks the way you want it
+                      to.</span></li>
                 </ul>
                 <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
+                  Great music doesn’t happen by accident—it’s built with care, creativity, and the right direction.
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -259,28 +289,18 @@
           <div class="tab-pane fade" id="features-tab-4">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
-                </p>
+                <p>We take your song and bring out the best in it, balancing vocals, instruments, and effects to make
+                  sure everything sounds clean, clear, and full of life.</p>
+
                 <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate
-                      velit.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu
-                      fugiat nulla pariatur.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Every instrument and voice sits perfectly in the
+                      mix.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Enhancing depth, clarity, and emotion in your track.</span>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span>Making sure your music sounds great everywhere, from
+                      earbuds to big speakers.</span></li>
                 </ul>
+                <p>Mixing isn’t just about adjusting levels—it’s about making your music feel alive.</p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="{% static 'img/working-4.jpg'%}" alt="" class="img-fluid">
@@ -396,8 +416,6 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio</h2>
         <p>What we've done</p>
@@ -409,13 +427,24 @@
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Card</li>
-            <li data-filter=".filter-branding">Web</li>
+            <li data-filter=".filter-app">Gospel</li>
+            <li data-filter=".filter-product">Afro</li>
+            <li data-filter=".filter-branding">Other</li>
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
+            {% for audio in audios %}
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="audio-card">
+                <img src="{{ audio.banner.url }}" class="audio-banner" alt="Banner">
+                <h4 class="mt-2">{{ audio.title }}</h4>
+                <audio class="plyr" controls>
+                  <source src="{% url 'secure_audio_stream' audio.id %}" type="audio/mp3">
+                </audio>
+              </div>
+            </div>
+            {% endfor %}
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <img src="{% static 'img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -754,6 +783,15 @@
 
   <!-- Main JS File -->
   <script src="{% static 'js/main.js'%}"></script>
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  <script>
+    $(document).ready(function () {
+      const players = Plyr.setup('.plyr', {
+        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        autoplay: false
+      });
+    });
+  </script>
 
 </body>
 

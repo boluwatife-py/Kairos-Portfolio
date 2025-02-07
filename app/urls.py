@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path('forms/contact/', views.contact_ajax, name='contact_ajax'),
+    path("secure-audio/<str:filename>/", views.secure_audio_stream, name="secure_audio_stream"),
 ]

@@ -26,7 +26,7 @@ class About(models.Model):
     long_about = models.TextField()
 
 
-class Whatoffered(models.Model):
+class WhatOffered(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     
@@ -50,3 +50,10 @@ class Testimonial(models.Model):
 class Faq(models.Model):
     question = models.CharField(max_length=50)
     answer = models.CharField(max_length=255)
+    
+class AudioFile(models.Model):
+    name = models.CharField(max_length=50)
+    file = models.FileField(upload_to="audio_files/")
+    file_cover = models.ImageField(upload_to="Audio")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    genre = models.CharField(max_length=255, choices=(('Gospel', 'gospel'), ('Afro', 'Afro'), ('Other', 'Other')), default='Gospel')
