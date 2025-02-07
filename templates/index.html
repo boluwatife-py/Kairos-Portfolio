@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Kairos | I make music |</title>
+  <title>Kairos</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -513,6 +513,8 @@
     </section><!-- /Services Section -->
 
     <!-- Portfolio Section -->
+
+    {% if audios|length >= 1 %}
     <section id="portfolio" class="portfolio section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Portfolio</h2>
@@ -563,6 +565,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     {% if testimonials|length >= 1 %}
     <!-- Testimonials Section -->
@@ -648,12 +651,12 @@
               <div class="accordion-item">
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapse-faq-{{f.counter}}">
+                    data-bs-target="#collapse-faq-{{f.id}}">
                     {{f.question}}?
                   </button>
                 </h2>
 
-                <div id="collapse-faq-{{f.counter}}" class="collapse" aria-labelledby="headingThree"
+                <div id="collapse-faq-{{f.id}}" class="collapse" aria-labelledby="headingThree"
                   data-parent="#accordion-faq">
                   <div class="accordion-body">
                     {{f.answer}}
