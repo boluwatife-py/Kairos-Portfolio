@@ -1,16 +1,11 @@
 #!/bin/bash
 
-# Stop execution if any command fails
-set -e
+# Upgrade pip and install dependencies using Python 3
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
 
-echo "🔹 Installing dependencies..."
-pip install --upgrade pip
-pip install -r requirements.txt
+# Apply migrations
+python3 manage.py migrate
 
-echo "🔹 Applying migrations..."
-python manage.py migrate
-
-echo "🔹 Collecting static files..."
-python manage.py collectstatic --noinput
-
-echo "✅ Build script completed successfully!"
+# Collect static files
+python3 manage.py collectstatic --noinput
