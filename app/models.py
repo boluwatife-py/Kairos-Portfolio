@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+import os
 
 
 class PageTitle(models.Model):
@@ -56,13 +58,27 @@ class Faq(models.Model):
     
     def __str__(self):
         return self.question
-    
+
+
+def validate_audio_file(value):
+    """Ensure the uploaded file is an audio format"""
+    valid_extensions = ['.mp3', '.wav', '.ogg', '.flac', '.aac']
+    ext = os.path.splitext(value.name)[1].lower()
+    if ext not in valid_extensions:
+        raise ValidationError("Only audio files are allowed! (MP3, WAV, OGG, FLAC, AAC)")
+
+def validate_image_file(value):
+    """Ensure the uploaded file is an image format"""
+    valid_extensions = ['.jpg', '.jpeg', '.png', '.gif']
+    ext = os.path.splitext(value.name)[1].lower()
+    if ext not in valid_extensions:
+        raise ValidationError("Only image files are allowed! (JPG, PNG, GIF)")
+
 class AudioFile(models.Model):
     name = models.CharField(max_length=50)
-    file = models.FileField(upload_to="audio_files/")
-    file_cover = models.ImageField(upload_to="Audio")
+    file = models.FileField(upload_to="audio_files/", validators=[validate_audio_file])
+    file_cover = models.ImageField(upload_to="Audio", validators=[validate_image_file])
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    # genre = models.CharField(max_length=255, choices=(('Gospel', 'gospel'), ('Afro', 'Afro'), ('Other', 'Other')), default='Gospel')
-    
+
     def __str__(self):
         return self.name
