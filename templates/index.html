@@ -48,6 +48,11 @@
       border-radius: 10px;
     }
 
+    .audio-title{
+      color: #fff;
+      font-weight: 600;
+    }
+
     .plyr--audio {
       width: 100%;
       margin-top: 15px;
@@ -488,14 +493,27 @@
 
             {% for audio in audios %}
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{audio.genre}}">
-              <div class="audio-card" style="background-image: url({{audio.file_cover.url}});">
-                <img src="{{ audio.file_cover.url }}" class="audio-banner" alt="Banner">
-                <h4 class="mt-2">{{ audio.title }}</h4>
+              <div class="audio-card" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)), 
+                          url('{{ audio.file_cover.url }}'); 
+                          background-size: cover; 
+                          background-position: center; 
+                          background-repeat: no-repeat; 
+                          border-radius: 10px;
+                          position: relative;
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                          padding: 20px;">
+
+                <h4 class="audio-title">{{ audio.name }}</h4>
+
                 <audio class="plyr" controls>
                   <source src="{{audio.file.url}}" type="audio/mp3">
                 </audio>
               </div>
             </div>
+
             {% endfor %}
           </div>
         </div>
