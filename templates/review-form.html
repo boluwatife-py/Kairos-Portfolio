@@ -10,37 +10,17 @@
     <link href="https://placehold.co/50x50/953BF8/white?text=K" rel="apple-touch-icon">
     <style>
         body {
-            background-color: #0d11174b;
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #fff;
+            /* No background */
         }
 
         .review-container {
-            padding: 30px;
-            border-radius: 10px;
             width: 100%;
-        }
-
-        .form-control {
-            border: 1px solid #30363d;
-            color: white;
-        }
-
-        .form-control:focus {
-            border-color: #58a6ff;
-            box-shadow: 0 0 5px rgba(88, 166, 255, 0.5);
-        }
-
-        .btn-primary {
-            background-color: #58a6ff;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #1f6feb;
+            max-width: 400px;
         }
     </style>
 </head>
@@ -48,41 +28,79 @@
 <body>
 
     <div class="review-container">
-        <h2 class="text-center">Submit Your Review</h2>
-        <form method="post" enctype="multipart/form-data">
+        <h3 class="text-center mb-4">Submit Your Review for Kairos</h3>
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
             {% csrf_token %}
 
-            <div class="mb-3">
-                <label for="name" class="form-label">Your Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="John Doe" required>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="name">Your Name</label>
+                    <input type="text" name="name" id="name" class="form-control is-invalid" placeholder="John Doe"
+                        required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter your name.</div>
+
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="who_you_are">Who You Are</label>
+                    <input type="text" name="who_you_are" id="who_you_are" class="form-control is-invalid"
+                        placeholder="e.g. Music Producer" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter what you do.</div>
+
+
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="rating">Rating</label>
+                    <select name="rating" id="rating" class="form-select is-invalid" required>
+                        <option value="" selected disabled>Select a rating</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a rating.</div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="who_you_are" class="form-label">Who You Are</label>
-                <input type="text" name="who_you_are" id="who_you_are" class="form-control"
-                    placeholder="e.g. Music Producer" required>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="testimony">Your Testimony</label>
+                    <textarea name="testimony" id="testimony" class="form-control is-invalid" rows="4"
+                        placeholder="Write your review here..." required></textarea>
+                    <div class="invalid-feedback">Testimony cannot be empty.</div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="rating" class="form-label">Rating (1-5)</label>
-                <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" placeholder="5"
-                    required>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="user_image">Upload Your Image</label>
+                    <input type="file" name="user_image" id="user_image" class="form-control is-invalid">
+                    <div class="invalid-feedback">Please upload an image.</div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="testimony" class="form-label">Your Testimony</label>
-                <textarea name="testimony" id="testimony" class="form-control" rows="4"
-                    placeholder="Write your review here..." required></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="user_image" class="form-label">Upload Image</label>
-                <input type="file" name="user_image" id="user_image" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Submit Review</button>
+            <button class="btn btn-primary w-100" type="submit">Submit Review</button>
         </form>
     </div>
+
+    <script>
+        // Bootstrap validation script
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
 
 </body>
 
