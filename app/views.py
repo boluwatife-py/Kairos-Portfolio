@@ -36,34 +36,3 @@ def home(request):
         context['what_offered_description_%s' %i] = item.description
     
     return render(request, "index.html", context)
-
-
-AUDIO_FILES_PATH = "/protected_audio/"
-
-def secure_audio_stream(request, audio_id):
-    """
-    Streams audio in chunks to prevent full file downloads.
-    """
-    audio = get_object_or_404(AudioFile, id=audio_id)
-    file_path = os.path.join(settings.MEDIA_ROOT, str(audio.file))
-
-    if not os.path.exists(file_path):
-        return StreamingHttpResponse("File not found", status=404)
-
-    def file_iterator(file_path, chunk_size=8192):
-        """Reads the file in chunks to prevent full downloads."""
-        with open(file_path, "rb") as f:
-            while chunk := f.read(chunk_size):
-                yield chunk
-
-    response = StreamingHttpResponse(file_iterator(file_path), content_type="audio/mpeg")
-    
-    # **🚨 SECURITY HEADERS (BLOCKS DOWNLOADS)**
-    response["Content-Disposition"] = 'inline'  # No "attachment" (blocks download)
-    response["X-Content-Type-Options"] = "nosniff"  # Prevents browser sniffing
-    response["Content-Security-Policy"] = "default-src 'self'"  # Restricts external sources
-    response["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
-    response["Pragma"] = "no-cache"
-    response["Expires"] = "0"
-
-    return response

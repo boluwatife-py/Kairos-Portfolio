@@ -68,9 +68,7 @@
     });
   }
 
-  /**
-   * Scroll top button
-   */
+
   let scrollTop = document.querySelector('.scroll-top');
 
   function toggleScrollTop() {
@@ -85,6 +83,30 @@
       behavior: 'smooth'
     });
   });
+  function detectDevTools() {
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    return widthThreshold || heightThreshold;
+}
+
+function toggleAudioSourceVisibility() {
+    const audioElements = document.querySelectorAll('audio');
+    
+    if (detectDevTools()) {
+        audioElements.forEach(audio => {
+            audio.querySelector('source').style.display = 'none';
+        });
+    } else {
+        audioElements.forEach(audio => {
+            audio.querySelector('source').style.display = 'block';
+        });
+    }
+}
+
+setInterval(toggleAudioSourceVisibility, 1000);
+
+toggleAudioSourceVisibility();
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
