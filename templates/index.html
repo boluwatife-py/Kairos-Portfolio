@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <!-- Plyr CSS -->
+
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
   <style>
     .audio-card {
@@ -38,7 +38,7 @@
       border-radius: 10px;
     }
 
-    .audio-card img{
+    .audio-card img {
       width: 100px;
       aspect-ratio: 1;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.329);
@@ -85,30 +85,47 @@
         font-size: 2rem !important;
       }
 
-      #hero p, #hero a {
+      #hero p,
+      #hero a {
         font-size: .8rem !important;
       }
-      .section-title p{
+
+      .section-title p {
         font-size: 1.5rem !important;
       }
 
-      .tre *{
+      .tre * {
         font-size: .8rem !important;
       }
 
-      #services .service-item{
-        padding-top: 30px;
-        padding-bottom: 30px;
+      #services .service-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
 
-      #services .service-item * h3{
-        font-size: 1.5rem !important;
+      #services .lwek {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
       }
-      #services .service-item * p{
+
+      #services .service-item .oioi {
         font-size: .8rem !important;
       }
-      .audio-card h4{
+
+      .audio-card h4 {
         font-size: 1rem;
+      }
+
+      #call-to-action h3 {
+        font-size: 1.2rem !important;
+      }
+
+      #call-to-action p {
+        font-size: .7rem !important;
+      }
+
+      #call-to-action a {
+        font-size: .6rem !important;
       }
     }
 
@@ -136,7 +153,8 @@
         margin-bottom: 10px !important;
       }
 
-      #hero p, #hero a {
+      #hero p,
+      #hero a {
         font-size: .7rem !important;
       }
 
@@ -144,10 +162,12 @@
       .carousel-control-prev {
         display: none !important;
       }
-      .section-title{
+
+      .section-title {
         padding-bottom: 30px !important;
       }
-      .section-title p{
+
+      .section-title p {
         font-size: 1.2rem !important;
       }
     }
@@ -424,8 +444,8 @@
               incredible together.</p>
           </div>
           <div class="col-xl-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="https://www.instagram.com/kairoskeys/" target="_blank">Call To
-              Action</a>
+            <a class="cta-btn align-middle" href="https://www.instagram.com/kairoskeys/" target="_blank">Let's talk on
+              Instagram</a>
           </div>
         </div>
 
@@ -451,8 +471,8 @@
               <div class="icon">
                 <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
-              <h3>{{what_offered_title_1}}</h3>
-              <p>{{what_offered_description_1}}</p>
+              <h3 class="lwek">{{what_offered_title_1}}</h3>
+              <p class="oioi">{{what_offered_description_1}}</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -461,8 +481,8 @@
               <div class="icon">
                 <i class="bi bi-boombox" style="color: #fd7e14;"></i>
               </div>
-              <h3>{{what_offered_title_2}}</h3>
-              <p>{{what_offered_description_2}}</p>
+              <h3 class="lwek">{{what_offered_title_2}}</h3>
+              <p class="oioi">{{what_offered_description_2}}</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -471,8 +491,8 @@
               <div class="icon">
                 <i class="bi bi-mic-fill" style="color: #20c997;"></i>
               </div>
-              <h3>{{what_offered_title_3}}</h3>
-              <p>{{what_offered_description_3}}</p>
+              <h3 class="lwek">{{what_offered_title_3}}</h3>
+              <p class="oioi">{{what_offered_description_3}}</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -481,8 +501,8 @@
               <div class="icon">
                 <i class="bi bi-vinyl" style="color: #df1529;"></i>
               </div>
-              <h3>{{what_offered_title_4}}</h3>
-              <p>{{what_offered_description_4}}</p>
+              <h3 class="lwek">{{what_offered_title_4}}</h3>
+              <p class="oioi">{{what_offered_description_4}}</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -491,8 +511,8 @@
               <div class="icon">
                 <i class="bi bi-music-player" style="color: #6610f2;"></i>
               </div>
-              <h3>{{what_offered_title_5}}</h3>
-              <p>{{what_offered_description_5}}</p>
+              <h3 class="lwek">{{what_offered_title_5}}</h3>
+              <p class="oioi">{{what_offered_description_5}}</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -501,8 +521,8 @@
               <div class="icon">
                 <i class="bi bi-music-note-list" style="color: #f3268c;"></i>
               </div>
-              <h3>{{what_offered_title_6}}</h3>
-              <p>{{what_offered_description_6}}</p>
+              <h3 class="lwek">{{what_offered_title_6}}</h3>
+              <p class="oioi">{{what_offered_description_6}}</p>
             </div>
           </div><!-- End Service Item -->
 
