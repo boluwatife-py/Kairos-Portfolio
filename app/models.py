@@ -47,9 +47,15 @@ class Testimonial(models.Model):
     testimony = models.CharField(max_length=255)
     user_image = models.ImageField(upload_to="Testimonials")
     
+    def __str__(self):
+        return self.name
+    
 class Faq(models.Model):
     question = models.CharField(max_length=50)
     answer = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.question
     
 class AudioFile(models.Model):
     name = models.CharField(max_length=50)
@@ -57,3 +63,6 @@ class AudioFile(models.Model):
     file_cover = models.ImageField(upload_to="Audio")
     uploaded_at = models.DateTimeField(auto_now_add=True)
     genre = models.CharField(max_length=255, choices=(('Gospel', 'gospel'), ('Afro', 'Afro'), ('Other', 'Other')), default='Gospel')
+    
+    def __str__(self):
+        return self.name

@@ -25,7 +25,7 @@
     .audio-card {
       border-radius: 12px;
       background: #fff;
-      padding: 20px;
+      padding: 30px 20px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
       margin: 10px;
@@ -35,6 +35,13 @@
       width: 100%;
       aspect-ratio: 2.5;
       object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .audio-card img{
+      width: 100px;
+      aspect-ratio: 1;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.329);
       border-radius: 10px;
     }
 
@@ -63,7 +70,7 @@
 
     @media (max-width: 768px) {
       .plyr {
-        max-width: 80%;
+        width: 100%;
       }
 
       .plyr__controls {
@@ -93,13 +100,19 @@
         padding-top: 30px;
         padding-bottom: 30px;
       }
+
+      #services .service-item * h3{
+        font-size: 1.5rem !important;
+      }
+      #services .service-item * p{
+        font-size: .8rem !important;
+      }
+      .audio-card h4{
+        font-size: 1rem;
+      }
     }
 
     @media (max-width: 480px) {
-      .plyr {
-        max-width: 100%;
-        /* Make it fully responsive */
-      }
 
       .plyr__controls {
         flex-wrap: wrap;
@@ -434,7 +447,7 @@
         <div class="row gy-4">
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
+            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
               <div class="icon">
                 <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
@@ -444,7 +457,7 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
+            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
               <div class="icon">
                 <i class="bi bi-boombox" style="color: #fd7e14;"></i>
               </div>
@@ -454,7 +467,7 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
+            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
               <div class="icon">
                 <i class="bi bi-mic-fill" style="color: #20c997;"></i>
               </div>
@@ -464,7 +477,7 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
+            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
               <div class="icon">
                 <i class="bi bi-vinyl" style="color: #df1529;"></i>
               </div>
@@ -474,7 +487,7 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
+            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
               <div class="icon">
                 <i class="bi bi-music-player" style="color: #6610f2;"></i>
               </div>
@@ -484,7 +497,7 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
+            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
               <div class="icon">
                 <i class="bi bi-music-note-list" style="color: #f3268c;"></i>
               </div>
@@ -521,7 +534,7 @@
 
             {% for audio in audios %}
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{audio.genre}}">
-              <div class="audio-card" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)), 
+              <div class="audio-card" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), 
                           url('{{ audio.file_cover.url }}'); 
                           background-size: cover; 
                           background-position: center; 
@@ -530,11 +543,14 @@
                           position: relative;
                           display: flex;
                           flex-direction: column;
-                          align-items: center;
-                          justify-content: center;
-                          padding: 20px;">
+                          align-items: flex-start;
+                          justify-content: flex-end;
+                          padding: 30px 20px;">
 
-                <h4 class="audio-title">{{ audio.name }}</h4>
+                <div class="d-flex align-items-end justify-content-end">
+                  <img src="{{audio.file_cover.url}}" alt="{{audio.name}}">
+                  <h4 class="mx-2 text-light">{{audio.name}}</h4>
+                </div>
 
                 <audio class="plyr" controls>
                   <source src="{{audio.file.url}}" type="audio/mp3">
@@ -624,7 +640,7 @@
         <p>Frequently Asked Questions</p>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up">
+      <div class="container tre" data-aos="fade-up">
         <div class="row">
           <div class="col-12">
             <div class="custom-accordion" id="accordion-faq">
@@ -662,7 +678,7 @@
         <p>Contact Us</p>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade" data-aos-delay="100">
+      <div class="container tre" data-aos="fade" data-aos-delay="100">
 
         <div class="row gy-4">
 
@@ -728,7 +744,7 @@
   </main>
 
   <footer id="footer" class="footer dark-background">
-    <div class="container">
+    <div class="container tre">
       <h3 class="sitename">{{title}}</h3>
       <p>{{heading_text_1}} {{heading_underline_text_1}}</p>
       <div class="social-links d-flex justify-content-center">

@@ -1,10 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Heropage, PageTitle, About, WhatOffered, Testimonial, Faq, AudioFile
-from django.core.mail import send_mail
-from django.http import JsonResponse
-import os
-from django.http import StreamingHttpResponse
-from django.conf import settings
+from .forms import ReviewForm
 
 
 def home(request):
@@ -36,3 +32,15 @@ def home(request):
         context['what_offered_description_%s' %i] = item.description
     
     return render(request, "index.html", context)
+
+
+def make_review(request):
+    if request.method == "POST":
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = ReviewForm()
+    
+    return render(request, "review-form.html", {"form": form})
