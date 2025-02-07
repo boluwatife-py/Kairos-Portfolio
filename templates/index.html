@@ -19,16 +19,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-
-  <script>
-    document.addEventListener("contextmenu", event => event.preventDefault()); // Disable Right-Click
-
-    function playAudio(url) {
-      const audioPlayer = document.getElementById("audio-player");
-      audioPlayer.src = url;
-      audioPlayer.play();
-    }
-  </script>
   <!-- Plyr CSS -->
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
   <style>
@@ -48,7 +38,7 @@
       border-radius: 10px;
     }
 
-    .audio-title{
+    .audio-title {
       color: #fff;
       font-weight: 600;
     }
@@ -57,6 +47,40 @@
       width: 100%;
       margin-top: 15px;
       border-radius: 10px;
+    }
+
+    /* Large screens (desktops) */
+    @media (min-width: 1024px) {
+      .plyr {
+        max-width: 500px;
+      }
+
+      .plyr__controls>button {
+        font-size: 18px;
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      .plyr {
+        max-width: 80%;
+      }
+
+      .plyr__controls {
+        justify-content: space-between;
+      }
+
+      .plyr__controls>button {
+        font-size: 16px;
+      }
+
+      #hero h2 {
+        font-size: 2rem !important;
+      }
+
+      #hero p {
+        font-size: .8rem !important;
+      }
     }
 
     @media (max-width: 480px) {
@@ -81,34 +105,23 @@
         font-size: 12px;
         /* Reduce time font size */
       }
-    }
 
-    /* Tablets */
-    @media (max-width: 768px) {
-      .plyr {
-        max-width: 80%;
+      #hero h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 10px !important;
       }
 
-      .plyr__controls {
-        justify-content: space-between;
+      #hero p {
+        font-size: .6rem !important;
       }
 
-      .plyr__controls>button {
-        font-size: 16px;
-      }
-    }
-
-    /* Large screens (desktops) */
-    @media (min-width: 1024px) {
-      .plyr {
-        max-width: 500px;
-      }
-
-      .plyr__controls>button {
-        font-size: 18px;
+      .carousel-control-next,
+      .carousel-control-previous {
+        display: none !important;
       }
     }
   </style>
+
 
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
@@ -713,7 +726,7 @@
           <span>Copyright ©</span> <strong class="px-1 sitename">2025 Kairos</strong> <span>All Rights Reserved</span>
         </div>
         <div class="credits">
-          Portfolio by <a href="https://github.com/boluwatife-py/">Boluwatife Akingbade</a>
+          Portfolio by <a href=mailto"boluwatife8081@gmail.com">Boluwatife Akingbade</a>
         </div>
       </div>
     </div>
