@@ -78,8 +78,20 @@
         font-size: 2rem !important;
       }
 
-      #hero p {
+      #hero p, #hero a {
         font-size: .8rem !important;
+      }
+      .section-title p{
+        font-size: 1.5rem !important;
+      }
+
+      .tre *{
+        font-size: .8rem !important;
+      }
+
+      #services .service-item{
+        padding-top: 30px;
+        padding-bottom: 30px;
       }
     }
 
@@ -111,13 +123,19 @@
         margin-bottom: 10px !important;
       }
 
-      #hero p {
-        font-size: .6rem !important;
+      #hero p, #hero a {
+        font-size: .7rem !important;
       }
 
       .carousel-control-next,
-      .carousel-control-previous {
+      .carousel-control-prev {
         display: none !important;
+      }
+      .section-title{
+        padding-bottom: 30px !important;
+      }
+      .section-title p{
+        font-size: 1.2rem !important;
       }
     }
   </style>
@@ -216,17 +234,14 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
         <p>Who we are</p>
       </div><!-- End Section Title -->
 
-      <div class="container">
-
+      <div class="container tre">
         <div class="row gy-4">
-
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p>
               {{short_about}}
@@ -252,7 +267,7 @@
     <!-- Features Section -->
     <section id="features" class="features section">
 
-      <div class="container">
+      <div class="container tre">
 
         <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item col-3">
@@ -543,7 +558,7 @@
         <p>What they are saying about us</p>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="container tre" data-aos="fade-up" data-aos-delay="100">
 
         <div class="swiper init-swiper">
           <script type="application/json" class="swiper-config">
