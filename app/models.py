@@ -62,7 +62,7 @@ class AudioFile(models.Model):
     file = models.FileField(upload_to="audio_files/")
     file_cover = models.ImageField(upload_to="Audio")
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    genre = models.CharField(max_length=255, choices=(('Gospel', 'gospel'), ('Afro', 'Afro'), ('Other', 'Other')), default='Gospel')
+    # genre = models.CharField(max_length=255, choices=(('Gospel', 'gospel'), ('Afro', 'Afro'), ('Other', 'Other')), default='Gospel')
     
     def __str__(self):
         return self.name
