@@ -51,7 +51,7 @@
     .plyr--audio {
       width: 100%;
       margin-top: 15px;
-      background: #EF6603;
+      border-radius: 10px;
     }
 
     @media (max-width: 480px) {
@@ -480,15 +480,15 @@
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-Gospel">Gospel</li>
-            <li data-filter=".filter-Afre">Afro</li>
+            <li data-filter=".filter-Afro">Afro</li>
             <li data-filter=".filter-Other">Other</li>
-          </ul><!-- End Portfolio Filters -->
+          </ul>
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
             {% for audio in audios %}
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{audio.genre}}">
-              <div class="audio-card">
+              <div class="audio-card" style="background-image: url({{audio.file_cover.url}});">
                 <img src="{{ audio.file_cover.url }}" class="audio-banner" alt="Banner">
                 <h4 class="mt-2">{{ audio.title }}</h4>
                 <audio class="plyr" controls>
@@ -722,7 +722,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const players = Plyr.setup('.plyr', {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        controls: ['play', 'progress', 'current-time', 'mute'],
         autoplay: false
       });
     });
