@@ -49,7 +49,7 @@ No one is permitted to use, modify, distribute, or host this software **without 
 For permission requests, contact: [Your Contact Email or Website]
 
 ## Contact
-For inquiries, please reach out via email at **[Your Email]** or visit **[Your Website]**.
+For inquiries, please reach out via email at **boluwatife8081@gmail.com** or visit.
 
 ---
 **DO NOT USE THIS PROJECT WITHOUT EXPLICIT AUTHORIZATION.**
