@@ -65,30 +65,24 @@ class Faq(models.Model):
 def validate_audio_file(value):
     """Ensure the uploaded file is an audio format"""
     valid_extensions = ['.mp3', '.wav', '.ogg', '.flac', '.aac']
+    
+    # Skip validation if no new file is uploaded (Cloudinary URLs have no extensions)
+    if isinstance(value, CloudinaryField) or not hasattr(value, 'name'):
+        return
 
-    # Get the file extension from the Cloudinary public ID or URL
-    if hasattr(value, 'public_id'):
-        ext = os.path.splitext(value.public_id)[1].lower()
-    elif hasattr(value, 'url'):
-        ext = os.path.splitext(cloudinary_url(value.public_id)[0])[1].lower()
-    else:
-        raise ValidationError("Invalid audio file")
-
+    ext = os.path.splitext(value.name)[1].lower()
     if ext not in valid_extensions:
         raise ValidationError("Only audio files are allowed! (MP3, WAV, OGG, FLAC, AAC)")
 
 def validate_image_file(value):
     """Ensure the uploaded file is an image format"""
     valid_extensions = ['.jpg', '.jpeg', '.png', '.gif']
+    
+    # Skip validation if no new file is uploaded
+    if isinstance(value, CloudinaryField) or not hasattr(value, 'name'):
+        return
 
-    # Get the file extension from the Cloudinary public ID or URL
-    if hasattr(value, 'public_id'):
-        ext = os.path.splitext(value.public_id)[1].lower()
-    elif hasattr(value, 'url'):
-        ext = os.path.splitext(cloudinary_url(value.public_id)[0])[1].lower()
-    else:
-        raise ValidationError("Invalid image file")
-
+    ext = os.path.splitext(value.name)[1].lower()
     if ext not in valid_extensions:
         raise ValidationError("Only image files are allowed! (JPG, PNG, GIF)")
 
@@ -100,16 +94,13 @@ class AudioFile(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
-        """Only validate file fields if they are being changed."""
+        """Only validate file fields if a new file is being uploaded"""
         if self.pk:  # If instance exists (update mode)
             old_instance = AudioFile.objects.get(pk=self.pk)
-            if self.file_cover != old_instance.file_cover:
+            if self.file_cover and self.file_cover != old_instance.file_cover:
                 validate_image_file(self.file_cover)
-            if self.file != old_instance.file:
+            if self.file and self.file != old_instance.file:
                 validate_audio_file(self.file)
         else:  # New instance
             validate_image_file(self.file_cover)
             validate_audio_file(self.file)
-
-    def __str__(self):
-        return self.name
