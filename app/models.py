@@ -75,10 +75,11 @@ def validate_image_file(value):
     if ext not in valid_extensions:
         raise ValidationError("Only image files are allowed! (JPG, PNG, GIF)")
 
+
 class AudioFile(models.Model):
     name = models.CharField(max_length=50)
-    file_cover = CloudinaryField('image', resource_type='image', blank=False, null=False)
-    file = CloudinaryField('audio', resource_type='raw', blank=False, null=False)
+    file_cover = CloudinaryField('image', resource_type='image', blank=False, null=False, validators=[validate_image_file])
+    file = CloudinaryField('audio', resource_type='raw', blank=False, null=False, validators=[validate_audio_file])
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
