@@ -6,6 +6,7 @@ python3 -m pip install -r requirements.txt
 
 # Apply migrations
 python3 manage.py migrate
+python3 manage.py createsuperuser --noinput
 
 # Collect static files
 python3 manage.py collectstatic --noinput
