@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 import os
+from cloudinary.models import CloudinaryField
 
 
 class PageTitle(models.Model):
@@ -47,7 +48,7 @@ class Testimonial(models.Model):
     who_you_are = models.CharField(max_length=25)
     rating = models.CharField(max_length=1, choices=rate)
     testimony = models.CharField(max_length=255)
-    user_image = models.ImageField(upload_to="Testimonials")
+    user_image = CloudinaryField('image', blank=False, null=False)
     
     def __str__(self):
         return self.name
@@ -76,8 +77,8 @@ def validate_image_file(value):
 
 class AudioFile(models.Model):
     name = models.CharField(max_length=50)
-    file = models.FileField(upload_to="audio_files/", validators=[validate_audio_file])
-    file_cover = models.ImageField(upload_to="Audio", validators=[validate_image_file])
+    file = CloudinaryField('audio', blank=False, null=False, validators=[validate_image_file])
+    file = CloudinaryField('audio', blank=False, null=False, validators=[validate_audio_file])
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
