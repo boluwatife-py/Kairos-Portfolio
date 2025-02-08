@@ -77,7 +77,7 @@ def validate_image_file(value):
 
 class AudioFile(models.Model):
     name = models.CharField(max_length=50)
-    file = CloudinaryField('audio', blank=False, null=False, validators=[validate_image_file])
+    file_cover = CloudinaryField('image', blank=False, null=False, validators=[validate_image_file])
     file = CloudinaryField('audio', blank=False, null=False, validators=[validate_audio_file])
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
