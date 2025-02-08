@@ -1,55 +1,56 @@
 # Portfolio Project
 
-This is a personal portfolio website built using Django and SQLite3. The project showcases work, experience, and other relevant details.
+## Overview
+This is a professionally designed portfolio website built using Django and SQLite3. It showcases the work, skills, and accomplishments of an individual in a structured and visually appealing manner. The portfolio owner can also edit and manage its content like a CMS.
 
 ## Features
-- Responsive design
-- Dynamic content management
-- Review and testimonial submission
-- Secure authentication
-- Image upload support
+- Fully responsive design
+- Dynamic project showcase
+- Contact form with backend processing
+- Testimonial and review section
+- Secure authentication system
+- Optimized for performance and SEO
+- Admin panel for easy content management
 
-## Installation
+## Technology Stack
+- **Backend:** Django, SQLite3
+- **Frontend:** HTML, CSS, Bootstrap
+- **Deployment:** Compatible with Render, Vercel, and other hosting platforms
 
-### Requirements
-- Python 3.11+
-- Django 5.1.6
-- SQLite3 (default database)
+## Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/portfolio-project.git
+   cd portfolio-project
+   ```
+2. Create a virtual environment and install dependencies:
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   pip install -r requirements.txt
+   ```
+3. Apply database migrations:
+   ```sh
+   python manage.py migrate
+   ```
+4. Run the development server:
+   ```sh
+   python manage.py runserver
+   ```
 
-### Setup
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
-
-# Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Apply migrations
-python manage.py migrate
-
-# Run the development server
-python manage.py runserver
-```
-
-## Usage
-- Open `http://127.0.0.1:8000/` in a browser to view the portfolio.
-- Admin panel: `http://127.0.0.1:8000/admin/` (requires superuser credentials).
+## View the Portfolio
+You can view the live portfolio at: **[Portfolio Live Link](https://kairos-ug9s.onrender.com)**
 
 ## License
-This project is protected under the following terms:
+**This project is strictly protected.**
 
-**Custom License**
+No one is permitted to use, modify, distribute, or host this software **without prior written permission** from the author. Unauthorized use is strictly prohibited.
 
-- You may not use, copy, modify, or distribute this project or its contents without explicit written permission from the author.
-- Unauthorized use of this software in any form is strictly prohibited.
-- For permissions, please contact the author.
+For permission requests, contact: [Your Contact Email or Website]
 
-See [LICENSE](LICENSE) for more details.
+## Contact
+For inquiries, please reach out via email at **[Your Email]** or visit **[Your Website]**.
 
-## Author
-Created by Boluwatife Akingbade. Reach out for permissions or contributions.
+---
+**DO NOT USE THIS PROJECT WITHOUT EXPLICIT AUTHORIZATION.**
+

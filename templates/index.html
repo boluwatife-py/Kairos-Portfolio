@@ -170,6 +170,33 @@
       .section-title p {
         font-size: 1.2rem !important;
       }
+      #services .service-item {
+        padding-left: 40px;
+        padding-right: 20px;
+      }
+
+      #services .lwek {
+        font-size: .8rem !important;
+        margin-bottom: 8px !important;
+      }
+
+      #services .service-item .oioi {
+        font-size: .6rem !important;
+        line-height: 12px;
+      }
+
+      #services .service-item .icon {
+        left: -10px;
+        top: calc(50% - 20px);
+      }
+
+      #services .service-item .pliut {
+        font-size: 2rem !important;
+      }
+      #call-to-action{
+        padding: 50px 0;
+      }
+
     }
   </style>
 
@@ -467,9 +494,9 @@
         <div class="row gy-4">
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
+            <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-cash-stack" style="color: #0dcaf0;"></i>
+                <i class="pliut bi bi-cash-stack" style="color: #0dcaf0;"></i>
               </div>
               <h3 class="lwek">{{what_offered_title_1}}</h3>
               <p class="oioi">{{what_offered_description_1}}</p>
@@ -477,9 +504,9 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
+            <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-boombox" style="color: #fd7e14;"></i>
+                <i class="pliut bi bi-boombox" style="color: #fd7e14;"></i>
               </div>
               <h3 class="lwek">{{what_offered_title_2}}</h3>
               <p class="oioi">{{what_offered_description_2}}</p>
@@ -487,9 +514,9 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
+            <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-mic-fill" style="color: #20c997;"></i>
+                <i class="pliut bi bi-mic-fill" style="color: #20c997;"></i>
               </div>
               <h3 class="lwek">{{what_offered_title_3}}</h3>
               <p class="oioi">{{what_offered_description_3}}</p>
@@ -497,9 +524,9 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
+            <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-vinyl" style="color: #df1529;"></i>
+                <i class="pliut bi bi-vinyl" style="color: #df1529;"></i>
               </div>
               <h3 class="lwek">{{what_offered_title_4}}</h3>
               <p class="oioi">{{what_offered_description_4}}</p>
@@ -507,9 +534,9 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
+            <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-music-player" style="color: #6610f2;"></i>
+                <i class="pliut bi bi-music-player" style="color: #6610f2;"></i>
               </div>
               <h3 class="lwek">{{what_offered_title_5}}</h3>
               <p class="oioi">{{what_offered_description_5}}</p>
@@ -517,9 +544,9 @@
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative fs-1 fs-md-2 fs-lg-3">
+            <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-music-note-list" style="color: #f3268c;"></i>
+                <i class="pliut bi bi-music-note-list" style="color: #f3268c;"></i>
               </div>
               <h3 class="lwek">{{what_offered_title_6}}</h3>
               <p class="oioi">{{what_offered_description_6}}</p>
@@ -725,7 +752,7 @@
           </div>
 
           <div class="col-lg-8">
-            <form action=mailto:"akingabdetolu247@gmail.com" method="get" class="php-email-form" data-aos="fade-up"
+            <form action=mailto:"akingabdetolu247@gmail.com" method="get" class="email-form" data-aos="fade-up"
               data-aos-delay="200">
               {% csrf_token %}
               <div class="row gy-4">
@@ -747,10 +774,6 @@
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
                   <button type="submit">Send Message</button>
                 </div>
 
