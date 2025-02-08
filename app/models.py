@@ -97,8 +97,19 @@ class AudioFile(models.Model):
     name = models.CharField(max_length=50)
     file_cover = CloudinaryField('image', resource_type='image', blank=False, null=False, validators=[validate_image_file])
     file = CloudinaryField('audio', resource_type='raw', blank=False, null=False, validators=[validate_audio_file])
-
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def clean(self):
+        """Only validate file fields if they are being changed."""
+        if self.pk:  # If instance exists (update mode)
+            old_instance = AudioFile.objects.get(pk=self.pk)
+            if self.file_cover != old_instance.file_cover:
+                validate_image_file(self.file_cover)
+            if self.file != old_instance.file:
+                validate_audio_file(self.file)
+        else:  # New instance
+            validate_image_file(self.file_cover)
+            validate_audio_file(self.file)
 
     def __str__(self):
         return self.name
