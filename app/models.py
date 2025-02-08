@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 import os
 from cloudinary.models import CloudinaryField
+from cloudinary.utils import cloudinary_url
 
 
 class PageTitle(models.Model):
@@ -64,14 +65,30 @@ class Faq(models.Model):
 def validate_audio_file(value):
     """Ensure the uploaded file is an audio format"""
     valid_extensions = ['.mp3', '.wav', '.ogg', '.flac', '.aac']
-    ext = os.path.splitext(value.name)[1].lower()
+
+    # Get the file extension from the Cloudinary public ID or URL
+    if hasattr(value, 'public_id'):
+        ext = os.path.splitext(value.public_id)[1].lower()
+    elif hasattr(value, 'url'):
+        ext = os.path.splitext(cloudinary_url(value.public_id)[0])[1].lower()
+    else:
+        raise ValidationError("Invalid audio file")
+
     if ext not in valid_extensions:
         raise ValidationError("Only audio files are allowed! (MP3, WAV, OGG, FLAC, AAC)")
 
 def validate_image_file(value):
     """Ensure the uploaded file is an image format"""
     valid_extensions = ['.jpg', '.jpeg', '.png', '.gif']
-    ext = os.path.splitext(value.name)[1].lower()
+
+    # Get the file extension from the Cloudinary public ID or URL
+    if hasattr(value, 'public_id'):
+        ext = os.path.splitext(value.public_id)[1].lower()
+    elif hasattr(value, 'url'):
+        ext = os.path.splitext(cloudinary_url(value.public_id)[0])[1].lower()
+    else:
+        raise ValidationError("Invalid image file")
+
     if ext not in valid_extensions:
         raise ValidationError("Only image files are allowed! (JPG, PNG, GIF)")
 
