@@ -93,7 +93,7 @@ DATABASES = {
 
 JAZZMIN_SETTINGS = {
     "site_title": "Kairos Admin",
-    "site_header": "Kairos"
+    "site_header": "Kairos",
     "welcome_sign": "Welcome Kairos,what will you like to do",
     "site_brand": "Kairos",
 }
