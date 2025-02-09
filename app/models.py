@@ -104,3 +104,5 @@ class AudioFile(models.Model):
         else:  # New instance
             validate_image_file(self.file_cover)
             validate_audio_file(self.file)
+    def __str__(self):
+        return self.name
