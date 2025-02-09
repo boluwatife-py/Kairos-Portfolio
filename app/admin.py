@@ -7,10 +7,6 @@ from django.contrib import messages
 
 admin.site.register(Testimonial)
 admin.site.register(Faq)
-admin.site.register(Heropage)
-admin.site.register(PageTitle)
-admin.site.register(About)
-admin.site.register(WhatOffered)
 
 class AudioFileAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
