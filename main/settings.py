@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ['kairos-ug9s.onrender.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -91,12 +90,7 @@ DATABASES = {
     }
 }
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Kairos Admin",
-    "site_header": "Kairos",
-    "welcome_sign": "Welcome Kairos,what will you like to do",
-    "site_brand": "Kairos",
-}
+
 
 
 # Password validation
