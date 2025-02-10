@@ -241,10 +241,45 @@
       width: 14px;
       height: 14px;
   }
+#alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    position: relative;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+.alert-error {
+    background-color: #f44336;
+}
+
+.close-alert {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
   @media (max-width: 480px){
         .formbold-main-wrapper {
     padding: 48px 10px;
   }
+      .alert{
+          font-size: 10px;}
 
   .formbold-form-wrapper {
     padding: 40px 10px;
@@ -292,6 +327,16 @@
 </style>
 </head>
 <body>
+    {% if messages %}
+    <div id="alert-container">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+                <span class="close-alert" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
     <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
     <img src="{%static 'img/KAIROS.png'%}" class="formbold-form-img">
@@ -458,6 +503,14 @@
 </body>
 
 <script> 
+    document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        let alerts = document.querySelectorAll(".alert");
+        alerts.forEach(alert => {
+            alert.style.display = "none";
+        });
+    }, 3000);  // Hide after 3 seconds
+});
     document.getElementById('upload').addEventListener('change', function(event) {
     const fileList = document.getElementById('fileList');
     fileList.innerHTML = '';        
