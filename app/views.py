@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Heropage, PageTitle, About, WhatOffered, Testimonial, Faq, AudioFile
 from .forms import ReviewForm
-
+from django.contrib import messages
 
 def home(request):
     title = PageTitle.objects.first()
@@ -36,13 +36,25 @@ def home(request):
 
 def make_review(request):
     if request.method == "POST":
-        form = ReviewForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect("home")
+        name = request.POST.get("name")
+        who_you_are = request.POST.get("who_you_are")
+        rating = request.POST.get("rating")
+        testimony = request.POST.get("testimony")
+        user_image = request.FILES.get("user_image")
+
+        if not name or not who_you_are or not rating or not testimony:
+            messages.error(request, "All fields are required!")
+        elif not user_image:
+            messages.error(request, "Please upload an image.")
         else:
-            print("Form errors:", form.errors)  # Debugging line
-    else:
-        form = ReviewForm()
-    
-    return render(request, "review.html", {"form": form})
+            Testimonial.objects.create(
+                name=name,
+                who_you_are=who_you_are,
+                rating=rating,
+                testimony=testimony,
+                user_image=user_image
+            )
+            messages.success(request, "Your review has been submitted successfully!")
+            return redirect("home")
+
+    return render(request, "review.html")
