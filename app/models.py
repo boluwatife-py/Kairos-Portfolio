@@ -48,10 +48,10 @@ class Testimonial(models.Model):
         ("5", "5"),
     ]
 
-    name = models.CharField(max_length=25)
-    who_you_are = models.CharField(max_length=25)
-    rating = models.CharField(max_length=1, choices=RATE_CHOICES)
-    testimony = models.CharField(max_length=255)
+    name = models.CharField(max_length=50, null=False, blank=False)
+    who_you_are = models.CharField(max_length=50, null=False, blank=False)
+    rating = models.CharField(max_length=1, choices=RATE_CHOICES, null=False, blank=False)
+    testimony = models.TextField(null=False, blank=False)
     user_image = CloudinaryField('image', blank=False, null=False)
 
     def delete(self, *args, **kwargs):
