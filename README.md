@@ -20,7 +20,7 @@ This is a professionally designed portfolio website built using Django and SQLit
 ## Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/portfolio-project.git
+   git clone https://github.com/boluwatife-py/kairos-portfolio.git
    cd portfolio-project
    ```
 2. Create a virtual environment and install dependencies:
