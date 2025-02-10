@@ -35,25 +35,44 @@ def home(request):
 
 def make_review(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        who_you_are = request.POST.get("who_you_are")
-        rating = request.POST.get("rating")
-        testimony = request.POST.get("testimony")
+        name = request.POST.get("name", "").strip()
+        who_you_are = request.POST.get("who_you_are", "").strip()
+        rating = request.POST.get("rating", "").strip()
+        testimony = request.POST.get("testimony", "").strip()
         user_image = request.FILES.get("user_image")
 
-        if not name or not who_you_are or not rating or not testimony:
+        # Validate required fields
+        if not all([name, who_you_are, rating, testimony]):
             messages.error(request, "All fields are required!")
-        elif not user_image:
+            return render(request, "review.html")
+
+        # Validate rating choice
+        valid_ratings = [choice[0] for choice in Testimonial.RATE_CHOICES]
+        if rating not in valid_ratings:
+            messages.error(request, "Invalid rating selected!")
+            return render(request, "review.html")
+
+        # Validate image
+        if not user_image:
             messages.error(request, "Please upload an image.")
-        else:
-            Testimonial.objects.create(
+            return render(request, "review.html")
+
+        try:
+            # Create a testimonial instance and validate it
+            testimonial = Testimonial(
                 name=name,
                 who_you_are=who_you_are,
                 rating=rating,
                 testimony=testimony,
                 user_image=user_image
             )
+            testimonial.full_clean()  # Runs model validation
+            testimonial.save()
+
             messages.success(request, "Your review has been submitted successfully!")
             return redirect("home")
+
+        except ValidationError as e:
+            messages.error(request, " ".join(e.messages))
 
     return render(request, "review.html")
