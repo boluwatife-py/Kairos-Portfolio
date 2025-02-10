@@ -40,6 +40,8 @@ def make_review(request):
         if form.is_valid():
             form.save()
             return redirect("home")
+        else:
+            print("Form errors:", form.errors)  # Debugging line
     else:
         form = ReviewForm()
     
