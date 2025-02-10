@@ -51,6 +51,13 @@ class Testimonial(models.Model):
     testimony = models.CharField(max_length=255)
     user_image = CloudinaryField('image', blank=False, null=False)
     
+    def delete(self, *args, **kwargs):
+        if self.user_image:
+            cloudinary.uploader.destroy(self.image.public_id)
+        super().delete(*args, **kwargs)
+
+
+
     def __str__(self):
         return self.name
     
