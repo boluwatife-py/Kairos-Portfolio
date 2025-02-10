@@ -208,23 +208,18 @@
     cursor: pointer;}
     
   .loader{
-      animation-name: spin;
-      animation-duration: 1s;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
+      animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
       display: flex;
       align-items: center;
       justify-content: center;
   }
   
-  @keyframes spin {
-      from{
-          transform: rotate(0deg);
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
       }
-      to{
-          transform: rotate(360deg);
-      }
-  }
+        
   .formbold-error{
       margin-top: 5px;
       font-size: 14px;
