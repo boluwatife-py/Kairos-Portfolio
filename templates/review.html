@@ -294,7 +294,7 @@
 <body>
     <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
-    <img src="{static 'img/KAIROS.png'}" class="formbold-form-img">
+    <img src="{%static 'img/KAIROS.png'%}" class="formbold-form-img">
     <form action="https://formbold.com/s/FORM_ID" method="POST">
       <div class="formbold-input-group">
         <label for="name" class="formbold-form-label">Your Name </label>
@@ -492,10 +492,7 @@ function clr() {
 }
     
     document.querySelector("form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission initially
-
-    // Remove existing error messages
-    document.querySelectorAll(".field-error").forEach((el) => el.classList.remove("show"));
+    event.preventDefault(); // Prevent form submission initiall
 
     // Get form elements
     const nameField = document.getElementById("name");
