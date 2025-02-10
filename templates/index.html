@@ -56,40 +56,6 @@
       border-radius: 10px;
     }
 
-    #alert-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 300px;
-    z-index: 1000;
-}
-
-.alert {
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: white;
-    position: relative;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.alert-success {
-    background-color: #4CAF50;
-}
-
-.alert-error {
-    background-color: #f44336;
-}
-
-.close-alert {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
     /* Large screens (desktops) */
     @media (min-width: 1024px) {
       .plyr {
@@ -230,8 +196,6 @@
       #call-to-action{
         padding: 50px 0;
       }
-            .alert{
-          font-size: 10px;}
 
     }
   </style>
@@ -249,16 +213,6 @@
 </head>
 
 <body class="index-page">
-      {% if messages %}
-    <div id="alert-container">
-        {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                {{ message }}
-                <span class="close-alert" onclick="this.parentElement.style.display='none';">&times;</span>
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
@@ -873,14 +827,6 @@
   <script src="{% static 'js/main.js'%}"></script>
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-        let alerts = document.querySelectorAll(".alert");
-        alerts.forEach(alert => {
-            alert.style.display = "none";
-        });
-    }, 3000);  // Hide after 3 seconds
-});
     document.addEventListener("DOMContentLoaded", function () {
       const players = Plyr.setup('.plyr', {
         controls: ['play', 'progress', 'current-time', 'mute'],
