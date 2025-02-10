@@ -3,9 +3,20 @@ from .models import Heropage, PageTitle, About, WhatOffered, Testimonial, Faq, A
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 
+class TestimonialAdmin(admin.ModelAdmin):
+    readonly_fields = [field.name for field in Testimonial._meta.fields]
 
+    def has_add_permission(self, request):
+        return False  # Disable adding new testimonials
 
-admin.site.register(Testimonial)
+    def has_change_permission(self, request, obj=None):
+        return False  # Disable editing existing testimonials
+
+    def has_delete_permission(self, request, obj=None):
+        return True  # Disable deleting testimonials
+
+admin.site.register(Testimonial, TestimonialAdmin)
+
 admin.site.register(Faq)
 
 class AudioFileAdmin(admin.ModelAdmin):
