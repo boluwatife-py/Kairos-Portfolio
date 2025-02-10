@@ -295,7 +295,7 @@
     <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
     <img src="{%static 'img/KAIROS.png'%}" class="formbold-form-img">
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
       <div class="formbold-input-group">
         <label for="name" class="formbold-form-label">Your Name </label>
@@ -457,7 +457,8 @@
 </div>
 </body>
 
-<script> document.getElementById('upload').addEventListener('change', function(event) {
+<script> 
+    document.getElementById('upload').addEventListener('change', function(event) {
     const fileList = document.getElementById('fileList');
     fileList.innerHTML = '';        
     const files = event.target.files;
