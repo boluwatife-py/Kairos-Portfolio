@@ -512,6 +512,7 @@
     }, 3000);  // Hide after 3 seconds
 });
     document.getElementById('upload').addEventListener('change', function(event) {
+    document.getElementById("upload-error").classList.remove("show")
     const fileList = document.getElementById('fileList');
     fileList.innerHTML = '';        
     const files = event.target.files;
