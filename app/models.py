@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 import os
 from cloudinary.models import CloudinaryField
 from cloudinary.utils import cloudinary_url
+import cloudinary
 
 
 class PageTitle(models.Model):
@@ -94,6 +95,7 @@ def validate_image_file(value):
         raise ValidationError("Only image files are allowed! (JPG, PNG, GIF)")
 
 
+
 class AudioFile(models.Model):
     name = models.CharField(max_length=50)
     file_cover = CloudinaryField('image', resource_type='image', blank=False, null=False, validators=[validate_image_file])
@@ -111,5 +113,14 @@ class AudioFile(models.Model):
         else:  # New instance
             validate_image_file(self.file_cover)
             validate_audio_file(self.file)
+
+    def delete(self, *args, **kwargs):
+        """Delete files from Cloudinary when instance is deleted"""
+        if self.file_cover:
+            cloudinary.uploader.destroy(self.file_cover.public_id)  # Delete image
+        if self.file:
+            cloudinary.uploader.destroy(self.file.public_id, resource_type="raw")  # Delete audio
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         return self.name
