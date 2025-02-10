@@ -37,26 +37,26 @@ class WhatOffered(models.Model):
     def __str__(self):
         return self.title
     
+
 class Testimonial(models.Model):
-    rate = {
-        "1": "1",
-        "2": "2",
-        "3": "3",
-        "4": "4",
-        "5": "5",
-    }
+    RATE_CHOICES = [
+        ("1", "1"),
+        ("2", "2"),
+        ("3", "3"),
+        ("4", "4"),
+        ("5", "5"),
+    ]
+
     name = models.CharField(max_length=25)
     who_you_are = models.CharField(max_length=25)
-    rating = models.CharField(max_length=1, choices=rate)
+    rating = models.CharField(max_length=1, choices=RATE_CHOICES)
     testimony = models.CharField(max_length=255)
     user_image = CloudinaryField('image', blank=False, null=False)
-    
+
     def delete(self, *args, **kwargs):
         if self.user_image:
-            cloudinary.uploader.destroy(self.image.public_id)
+            cloudinary.uploader.destroy(self.user_image.public_id)
         super().delete(*args, **kwargs)
-
-
 
     def __str__(self):
         return self.name
